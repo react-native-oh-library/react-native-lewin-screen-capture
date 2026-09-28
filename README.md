@@ -1,4 +1,4 @@
-# @oh-rn/react-native-lewin-screen-capture for HarmonyOS
+# @react-native-ohos/react-native-lewin-screen-capture for HarmonyOS
 
 本项目基于 [react-native-lewin-screen-capture](https://github.com/LewinJun/react-native-lewin-screen-capture) 开发，为 React Native 鸿蒙（OpenHarmony）适配版本。
 
@@ -11,7 +11,7 @@
 ## 安装
 
 ```bash
-npm install @oh-rn/react-native-lewin-screen-capture
+npm install @react-native-ohos/react-native-lewin-screen-capture
 ```
 
 ## 使用
@@ -45,7 +45,7 @@ ScreenCaptureUtil.clearCache(data => {
 });
 ```
 
-> import 时使用原库名 `'react-native-lewin-screen-capture'`（由 Metro 端 harmony 别名自动重定向到 `@oh-rn/react-native-lewin-screen-capture`），而非直接 import 鸿蒙包名。
+> import 时使用原库名 `'react-native-lewin-screen-capture'`（由 Metro 端 harmony 别名自动重定向到 `@react-native-ohos/react-native-lewin-screen-capture`），而非直接 import 鸿蒙包名。
 
 **平台差异**：
 - `startListener` 的 `keyWords` 参数在鸿蒙端保留但值不参与逻辑（使用系统原生截屏事件 `window.on('screenshot')`，无需关键字过滤）
@@ -86,7 +86,7 @@ ScreenCaptureUtil.clearCache(data => {
 
 ```json
 "dependencies": {
-  "@oh-rn/react-native-lewin-screen-capture": "file:../../node_modules/@oh-rn/react-native-lewin-screen-capture/harmony/lewin_screen_capture.har"
+  "@react-native-ohos/react-native-lewin-screen-capture": "file:../../node_modules/@react-native-ohos/react-native-lewin-screen-capture/harmony/lewin_screen_capture.har"
 }
 ```
 
@@ -99,7 +99,7 @@ ScreenCaptureUtil.clearCache(data => {
 ```cmake
 set(OH_MODULES "${CMAKE_CURRENT_SOURCE_DIR}/../../../oh_modules")
 
-add_subdirectory("${OH_MODULES}/@oh-rn/react-native-lewin-screen-capture/src/main/cpp" ./lewin_screen_capture)
+add_subdirectory("${OH_MODULES}/@react-native-ohos/react-native-lewin-screen-capture/src/main/cpp" ./lewin_screen_capture)
 
 target_link_libraries(rnoh_app PUBLIC lewin_screen_capture)
 ```
@@ -123,7 +123,7 @@ std::vector<std::shared_ptr<Package>> PackageProvider::getPackages(Package::Cont
 打开 `entry/src/main/ets/RNPackagesFactory.ets`，添加：
 
 ```typescript
-import { LewinScreenCapturePackage } from '@oh-rn/react-native-lewin-screen-capture/ts';
+import { LewinScreenCapturePackage } from '@react-native-ohos/react-native-lewin-screen-capture/ts';
 
 export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
   return [
@@ -157,7 +157,7 @@ export function createRNPackages(ctx: RNPackageContext): RNPackage[] {
 
 - 无需在 `module.json5` 声明任何权限（截屏文件读写均在应用沙箱内完成）
 
-## 快速验证（运行 Example）
+## 快速验证（运行 example）
 
 ### 前置条件
 
@@ -208,7 +208,7 @@ npm run dev
 
 在 DevEco Studio 中点击运行按钮，将 HAP 安装到设备/模拟器。
 
-> **注意**：Example 中已预置插件依赖和 Package 注册，无需手动配置 Link。
+> **注意**：example 中已预置插件依赖和 Package 注册，无需手动配置 Link。
 
 ## 约束与限制
 

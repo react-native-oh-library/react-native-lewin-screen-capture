@@ -12,6 +12,9 @@ yarn-error.log
 # npm pack output
 *.tgz
 
+# Jest coverage
+jest/coverage/
+
 # IDE
 .idea/
 .vscode/
