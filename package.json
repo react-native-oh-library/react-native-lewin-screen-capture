@@ -1,7 +1,7 @@
 {
   "name": "@react-native-ohos/react-native-lewin-screen-capture",
-  "version": "1.1.0",
-  "description": "获取系统截屏事件与获取当前屏幕截屏",
+  "version": "1.1.0-beta.1",
+  "description": "Listen for system screenshot events and capture the current screen",
   "main": "./src/index.js",
   "module": "./src/index.js",
   "react-native": "./src/index.js",
@@ -9,12 +9,14 @@
   "private": false,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LewinJun/react-native-lewin-screen-capture.git"
+    "url": "https://github.com/LewinJun/react-native-lewin-screen-capture"
   },
   "keywords": [
     "react-native",
     "harmony",
-    "harmonyos"
+    "ohos",
+    "openharmony",
+    "rnoh"
   ],
   "homepage": "https://github.com/LewinJun/react-native-lewin-screen-capture#readme",
   "publishConfig": {
@@ -24,7 +26,9 @@
     "src/",
     "README.md",
     "LICENSE",
-    "harmony/"
+    "harmony/",
+    "CHANGELOG.md",
+    "README.md"
   ],
   "scripts": {
     "codegen-lib": "react-native codegen-lib-harmony --no-safety-check --npm-package-name lewin_screen_capture --cpp-output-path ./harmony/lewin_screen_capture/src/main/cpp/generated --ets-output-path ./harmony/lewin_screen_capture/src/main/ets/generated --turbo-modules-spec-paths ./src/specs/v1/NativeScreenCapture.ts",
