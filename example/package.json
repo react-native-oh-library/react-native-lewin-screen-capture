@@ -11,7 +11,7 @@
     "install:pkg": "npm uninstall @react-native-ohos/react-native-lewin-screen-capture && npm run pack:pkg && npm i @react-native-ohos/react-native-lewin-screen-capture@file:../react-native-ohos-react-native-lewin-screen-capture-1.1.0-beta.1.tgz",
     "dev": "npm run codegen && react-native bundle-harmony --dev --minify=false",
     "prod": "npm run codegen && react-native bundle-harmony --dev=false --minify=true",
-    "postinstall": "node ./scripts/create-build-profile",
+    "postinstall": "node ./scripts/create-build-profile && node ./scripts/sync-hvigor-plugin",
     "fast:pkg": "cd ../ && npm i --legacy-peer-deps && npm pack && cd ./example && npm i && npm run dev"
   },
   "dependencies": {

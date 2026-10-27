@@ -1,5 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import ScreenCaptureUtil, {
   ScreenCaptureResult,
 } from 'react-native-lewin-screen-capture';
@@ -127,46 +133,51 @@ export default function ScreenCaptureDemo() {
   );
 
   return (
-    <Tester>
-      <TestSuite name="react-native-lewin-screen-capture">
-        <TestCase itShould="监听状态">
-          <Text testID="app-title">{`screenshot listener: ${listening ? 'ON' : 'OFF'}`}</Text>
-        </TestCase>
-        <TestCase itShould="开始监听系统截屏事件：startListener">
-          <TouchableOpacity testID="test-startListener-btn" onPress={handleStartListener}>
-            <Text>Run startListener</Text>
-          </TouchableOpacity>
-          {renderOutcome('startListener')}
-        </TestCase>
-        <TestCase itShould="停止监听：stopListener">
-          <TouchableOpacity testID="test-stopListener-btn" onPress={() => void handleStopListener()}>
-            <Text>Run stopListener</Text>
-          </TouchableOpacity>
-          {renderOutcome('stopListener')}
-        </TestCase>
-        <TestCase itShould="主动截取当前屏幕：screenCapture">
-          <TouchableOpacity testID="test-screenCapture-btn" onPress={handleScreenCapture}>
-            <Text>Run screenCapture</Text>
-          </TouchableOpacity>
-          {renderOutcome('screenCapture')}
-        </TestCase>
-        <TestCase itShould="清除截屏缓存：clearCache">
-          <TouchableOpacity testID="test-clearCache-btn" onPress={handleClearCache}>
-            <Text>Run clearCache</Text>
-          </TouchableOpacity>
-          {renderOutcome('clearCache')}
-        </TestCase>
-        {previewBase64 ? (
-          <TestCase itShould="截屏预览">
-            <Image
-              testID="capture-preview"
-              style={{width: 240, height: 360}}
-              resizeMode="contain"
-              source={{uri: `data:image/png;base64,${previewBase64}`}}
-            />
+    <Tester style={{flex: 1}}>
+      <ScrollView
+        style={{flex: 1}}
+        contentContainerStyle={{paddingBottom: 48}}
+        showsVerticalScrollIndicator={true}>
+        <TestSuite name="react-native-lewin-screen-capture">
+          <TestCase itShould="监听状态">
+            <Text testID="app-title">{`screenshot listener: ${listening ? 'ON' : 'OFF'}`}</Text>
           </TestCase>
-        ) : null}
-      </TestSuite>
+          <TestCase itShould="开始监听系统截屏事件：startListener">
+            <TouchableOpacity testID="test-startListener-btn" onPress={handleStartListener}>
+              <Text>Run startListener</Text>
+            </TouchableOpacity>
+            {renderOutcome('startListener')}
+          </TestCase>
+          <TestCase itShould="停止监听：stopListener">
+            <TouchableOpacity testID="test-stopListener-btn" onPress={() => void handleStopListener()}>
+              <Text>Run stopListener</Text>
+            </TouchableOpacity>
+            {renderOutcome('stopListener')}
+          </TestCase>
+          <TestCase itShould="主动截取当前屏幕：screenCapture">
+            <TouchableOpacity testID="test-screenCapture-btn" onPress={handleScreenCapture}>
+              <Text>Run screenCapture</Text>
+            </TouchableOpacity>
+            {renderOutcome('screenCapture')}
+          </TestCase>
+          <TestCase itShould="清除截屏缓存：clearCache">
+            <TouchableOpacity testID="test-clearCache-btn" onPress={handleClearCache}>
+              <Text>Run clearCache</Text>
+            </TouchableOpacity>
+            {renderOutcome('clearCache')}
+          </TestCase>
+          {previewBase64 ? (
+            <TestCase itShould="截屏预览">
+              <Image
+                testID="capture-preview"
+                style={{width: 240, height: 360}}
+                resizeMode="contain"
+                source={{uri: `data:image/png;base64,${previewBase64}`}}
+              />
+            </TestCase>
+          ) : null}
+        </TestSuite>
+      </ScrollView>
     </Tester>
   );
 }
