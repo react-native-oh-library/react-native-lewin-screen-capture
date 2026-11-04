@@ -40,7 +40,7 @@ yarn add @react-native-ohos/react-native-lewin-screen-capture
 |--------------------------------------|----------------|-----------|
 | 1.1.0                                | Yes             |  0.72/0.77/0.82/0.84   |
 
-Projects using AutoLink need to be configured according to this document. Autolink framework guide: https://gitcode.com/CPF-RN/ohos_react_native/blob/master/docs/zh-cn/Autolinking.md
+Projects using AutoLink need to be configured according to this document. Autolink framework guide: https://gitcode.com/CPF-RN/ohos_react_native/blob/master/docs/en/Autolinking.md
 
 If the version you are using supports Autolink and your project has integrated Autolink, you can skip the ManualLink configuration.
 <details>
@@ -235,7 +235,7 @@ ScreenCaptureUtil.clearCache((data) => {
 ### API
 | Name     | Type     | Param Type | Return Value | Required    | Platform | OpenHarmony Support | Description  |
 |--------|---------|-----|-------|-------|--------|-----|-----------------|
-| startListener   | function | callBack: (data: [CALL_BACK_PROPS](#data-structures)) => void, keyWords?: string | Emitter | No | All | partially | Starts listening for system screenshot events; the screenshot info is returned via callBack when a screenshot is taken. `keyWords` is a reserved parameter for API compatibility and its value is not used in the logic on OpenHarmony; the callback image is a snapshot of the app window at the moment the event fires |
+| startListener   | function | callBack: (data: [CALL_BACK_PROPS](#data-structures)) => void, keyWords: string | Emitter | No | All | partially | Starts listening for system screenshot events; the screenshot info is returned via callBack when a screenshot is taken. `keyWords` is a reserved parameter for API compatibility and its value is not used in the logic on OpenHarmony; the callback image is a snapshot of the app window at the moment the event fires |
 | stopListener  | function | /  | Promise\<string\>   | No | All | Yes   | Stops listening for screenshot events and removes the listener; resolves 'true' on success |
 | screenCapture   | function | callBack: (data: [CALL_BACK_PROPS](#data-structures)) => void, isHiddenStatus: boolean, options: [CaptureOptions](#captureoptions) | / (result returned via callBack) | No | All | Yes   | Captures the current screen (app window snapshot). `isHiddenStatus` is a reserved parameter for compatibility and has no actual effect on OpenHarmony |
 | clearCache | function | callBack: (data: [CALL_BACK_PROPS](#data-structures)) => void | / (result returned via callBack) | No | All | Yes   | Recursively deletes the screenshot cache directory; the result is returned via callBack |
@@ -270,15 +270,15 @@ None
 ````
 /react-native-lewin-screen-capture  # project root directory
 ├── harmony              # HarmonyOS adaptation code
-│    └─ lewin_screen_capture.har          # har package
+│    ├─ lewin_screen_capture.har          # har package
 │    └─ lewin_screen_capture                  # core HarmonyOS adaptation code
-│          └─ index.ets    # adaptation code entry
-│          └─ src/main/ets
+│          ├─ index.ets    # adaptation code entry
+│          ├─ src/main/ets
 │              └─ LewinScreenCaptureTurboModulesFactory.ets  # TurboModule implementation and Package export
 │          └─ src/main/cpp
 │              └─ LewinScreenCapturePackage.h  # C++ side Package registration
 ├── src                  # RN code
-│    └─ index.js  # entry file (ScreenCaptureUtil)
+│    ├─ index.js  # entry file (ScreenCaptureUtil)
 │    └─ specs/v1/NativeScreenCapture.ts  # TurboModule type definitions
 ├── example              # example project (RNOH Tester)
 ├── README.md           # installation and usage guide (Chinese)

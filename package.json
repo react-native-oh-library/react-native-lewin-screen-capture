@@ -27,8 +27,7 @@
     "README.md",
     "LICENSE",
     "harmony/",
-    "CHANGELOG.md",
-    "README.md"
+    "CHANGELOG.md"
   ],
   "scripts": {
     "codegen-lib": "react-native codegen-lib-harmony --no-safety-check --npm-package-name lewin_screen_capture --cpp-output-path ./harmony/lewin_screen_capture/src/main/cpp/generated --ets-output-path ./harmony/lewin_screen_capture/src/main/ets/generated --turbo-modules-spec-paths ./src/specs/v1/NativeScreenCapture.ts",
