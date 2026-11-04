@@ -9,7 +9,7 @@
   "private": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/LewinJun/react-native-lewin-screen-capture"
+    "url": "https://github.com/react-native-oh-library/react-native-lewin-screen-capture"
   },
   "keywords": [
     "react-native",
@@ -18,7 +18,7 @@
     "openharmony",
     "rnoh"
   ],
-  "homepage": "https://github.com/LewinJun/react-native-lewin-screen-capture#readme",
+  "homepage": "https://github.com/react-native-oh-library/react-native-lewin-screen-capture#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

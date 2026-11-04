@@ -4,7 +4,8 @@ import { TurboModuleRegistry } from 'react-native';
 export interface Spec extends TurboModule {
   /**
    * 开始监听系统截屏事件。keyWords 为 API 兼容保留参数（鸿蒙走系统原生
-   * window.on('screenshot') 事件，无需 Android 的截屏文件名关键字启发式判定）。
+   * window.on('screenshot') 事件，无需 Android 的截屏文件名关键字启发式判定）；
+   * JS 侧可缺省（index.js 已兜底传空串），桥接层契约保持必传。
    * resolve 'success'，失败 reject code '500'。
    */
   startListener(keyWords: string): Promise<string>;
