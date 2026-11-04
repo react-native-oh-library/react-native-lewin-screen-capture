@@ -10,7 +10,7 @@
 
 | 三方库名称    | 三方库版本（npm地址）    | 发布信息     | 支持RN版本    | Autolink     | 编译API版本     | 社区基线版本    |  源码地址   |
 | ------------ | ------------ | ------------------------------ | ------------- | ------------- |------------------------ | ------------- | ------------- |
-| @react-native-ohos/react-native-lewin-screen-capture | [1.1.0（开发中）](https://www.npmjs.com/package/@react-native-ohos/react-native-lewin-screen-capture)    | [Github Releases](https://github.com/wangfandev/react-native-lewin-screen-capture-jest/releases) | 0.72.\*/0.77.\*/0.82.\*/0.84.\* | 是 | API12+ | 1.1.0 | [master](https://github.com/wangfandev/react-native-lewin-screen-capture-jest) |
+| @react-native-ohos/react-native-lewin-screen-capture | [1.1.0（开发中）](https://www.npmjs.com/package/@react-native-ohos/react-native-lewin-screen-capture)    | [Github Releases](https://github.com/react-native-oh-library/react-native-lewin-screen-capture/releases) | 0.72.\*/0.77.\*/0.82.\*/0.84.\* | 是 | API12+ | 1.1.0 | [master](https://github.com/react-native-oh-library/react-native-lewin-screen-capture/tree/master) |
 
 ## 简介
 
@@ -235,7 +235,7 @@ ScreenCaptureUtil.clearCache((data) => {
 ### API
 | 名称     | 类型     | 参数类型 | 返回值 | 必填    | 平台 | OpenHarmony平台支持 | 描述  |
 |--------|---------|-----|-------|-------|--------|-----|-----------------|
-| startListener   | function | callBack: (data: [CALL_BACK_PROPS](#数据结构)) => void, keyWords: string | Emitter | No | All | partially | 开始监听系统截屏事件，截屏触发时经 callBack 回调截图信息。`keyWords` 为 API 兼容保留参数，鸿蒙端值不参与逻辑；回调图片为事件触发时刻的应用窗口快照 |
+| startListener   | function | callBack: (data: [CALL_BACK_PROPS](#数据结构)) => void, keyWords?: string | Emitter | No | All | partially | 开始监听系统截屏事件，截屏触发时经 callBack 回调截图信息。`keyWords` 为 API 兼容保留参数，鸿蒙端值不参与逻辑；回调图片为事件触发时刻的应用窗口快照 |
 | stopListener  | function | /  | Promise\<string\>   | No | All | Yes   | 停止截屏事件监听并移除监听器，成功 resolve 'true' |
 | screenCapture   | function | callBack: (data: [CALL_BACK_PROPS](#数据结构)) => void, isHiddenStatus: boolean, options: [CaptureOptions](#captureoptions) | / （结果经 callBack 回调） | No | All | Yes   | 截取当前屏幕（应用窗口快照）。`isHiddenStatus` 为兼容保留参数，鸿蒙端无实际影响 |
 | clearCache | function | callBack: (data: [CALL_BACK_PROPS](#数据结构)) => void | / （结果经 callBack 回调） | No | All | Yes   | 递归删除截屏缓存目录，结果经 callBack 回调 |
