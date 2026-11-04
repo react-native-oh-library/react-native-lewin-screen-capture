@@ -235,7 +235,7 @@ ScreenCaptureUtil.clearCache((data) => {
 ### API
 | 名称     | 类型     | 参数类型 | 返回值 | 必填    | 平台 | OpenHarmony平台支持 | 描述  |
 |--------|---------|-----|-------|-------|--------|-----|-----------------|
-| startListener   | function | callBack: (data: [CALL_BACK_PROPS](#数据结构)) => void, keyWords?: string | Emitter | No | All | partially | 开始监听系统截屏事件，截屏触发时经 callBack 回调截图信息。`keyWords` 为 API 兼容保留参数，鸿蒙端值不参与逻辑；回调图片为事件触发时刻的应用窗口快照 |
+| startListener   | function | callBack: (data: [CALL_BACK_PROPS](#数据结构)) => void, keyWords: string | Emitter | No | All | partially | 开始监听系统截屏事件，截屏触发时经 callBack 回调截图信息。`keyWords` 为 API 兼容保留参数，鸿蒙端值不参与逻辑；回调图片为事件触发时刻的应用窗口快照 |
 | stopListener  | function | /  | Promise\<string\>   | No | All | Yes   | 停止截屏事件监听并移除监听器，成功 resolve 'true' |
 | screenCapture   | function | callBack: (data: [CALL_BACK_PROPS](#数据结构)) => void, isHiddenStatus: boolean, options: [CaptureOptions](#captureoptions) | / （结果经 callBack 回调） | No | All | Yes   | 截取当前屏幕（应用窗口快照）。`isHiddenStatus` 为兼容保留参数，鸿蒙端无实际影响 |
 | clearCache | function | callBack: (data: [CALL_BACK_PROPS](#数据结构)) => void | / （结果经 callBack 回调） | No | All | Yes   | 递归删除截屏缓存目录，结果经 callBack 回调 |
@@ -270,17 +270,22 @@ CaptureOptions
 ````
 /react-native-lewin-screen-capture  # 项目根目录
 ├── harmony              # 鸿蒙适配代码
-│    └─ lewin_screen_capture.har          # har包
+│    ├─ lewin_screen_capture.har          # har包
 │    └─ lewin_screen_capture                  # 鸿蒙适配核心代码
-│          └─ index.ets    # 鸿蒙适配代码入口
-│          └─ src/main/ets
-│              └─ LewinScreenCaptureTurboModulesFactory.ets  # TurboModule 实现与 Package 导出
+│          ├─ index.ets    # 鸿蒙适配代码入口
+│          ├─ src/main/ets
+│              ├─ LewinScreenCaptureTurboModulesFactory.ets  # Package 导出与 TurboModule 注册
+│              ├─ ScreenCaptureTurboModule.ts  # 截屏 TurboModule 具体实现（事件监听/主动截屏/缓存清理）
+│              └─ generated/  # codegen 生成的 TurboModule 类型定义（TM.ScreenCapture）
 │          └─ src/main/cpp
-│              └─ LewinScreenCapturePackage.h  # C++ 侧 Package 注册
+│              ├─ CMakeLists.txt  # C++ 侧编译配置
+│              ├─ LewinScreenCapturePackage.h  # C++ 侧 Package 注册
+│              └─ generated/  # codegen 生成的 C++ 代码（BasePackage、turbo_modules 等）
 ├── src                  # RN代码
-│    └─ index.js  # 入口文件（ScreenCaptureUtil）
+│    ├─ index.js  # 入口文件（ScreenCaptureUtil）
 │    └─ specs/v1/NativeScreenCapture.ts  # TurboModule 类型定义
 ├── example              # 示例工程（RNOH Tester）
+├── jest                 # 单元测试
 ├── README.md           # 中文安装使用方法
 └── README_en.md        # 英文安装使用方法
 ````
