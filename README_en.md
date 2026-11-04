@@ -274,13 +274,18 @@ None
 │    └─ lewin_screen_capture                  # core HarmonyOS adaptation code
 │          ├─ index.ets    # adaptation code entry
 │          ├─ src/main/ets
-│              └─ LewinScreenCaptureTurboModulesFactory.ets  # TurboModule implementation and Package export
+│              ├─ LewinScreenCaptureTurboModulesFactory.ets  # Package export and TurboModule registration
+│              ├─ ScreenCaptureTurboModule.ts  # screenshot TurboModule implementation (event listening / active capture / cache clearing)
+│              └─ generated/  # codegen-generated TurboModule type definitions (TM.ScreenCapture)
 │          └─ src/main/cpp
-│              └─ LewinScreenCapturePackage.h  # C++ side Package registration
+│              ├─ CMakeLists.txt  # C++ side build configuration
+│              ├─ LewinScreenCapturePackage.h  # C++ side Package registration
+│              └─ generated/  # codegen-generated C++ code (BasePackage, turbo_modules, etc.)
 ├── src                  # RN code
 │    ├─ index.js  # entry file (ScreenCaptureUtil)
 │    └─ specs/v1/NativeScreenCapture.ts  # TurboModule type definitions
 ├── example              # example project (RNOH Tester)
+├── jest                 # unit tests
 ├── README.md           # installation and usage guide (Chinese)
 └── README_en.md        # installation and usage guide (English)
 ````

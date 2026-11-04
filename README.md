@@ -274,13 +274,18 @@ CaptureOptions
 │    └─ lewin_screen_capture                  # 鸿蒙适配核心代码
 │          ├─ index.ets    # 鸿蒙适配代码入口
 │          ├─ src/main/ets
-│              └─ LewinScreenCaptureTurboModulesFactory.ets  # TurboModule 实现与 Package 导出
+│              ├─ LewinScreenCaptureTurboModulesFactory.ets  # Package 导出与 TurboModule 注册
+│              ├─ ScreenCaptureTurboModule.ts  # 截屏 TurboModule 具体实现（事件监听/主动截屏/缓存清理）
+│              └─ generated/  # codegen 生成的 TurboModule 类型定义（TM.ScreenCapture）
 │          └─ src/main/cpp
-│              └─ LewinScreenCapturePackage.h  # C++ 侧 Package 注册
+│              ├─ CMakeLists.txt  # C++ 侧编译配置
+│              ├─ LewinScreenCapturePackage.h  # C++ 侧 Package 注册
+│              └─ generated/  # codegen 生成的 C++ 代码（BasePackage、turbo_modules 等）
 ├── src                  # RN代码
 │    ├─ index.js  # 入口文件（ScreenCaptureUtil）
 │    └─ specs/v1/NativeScreenCapture.ts  # TurboModule 类型定义
 ├── example              # 示例工程（RNOH Tester）
+├── jest                 # 单元测试
 ├── README.md           # 中文安装使用方法
 └── README_en.md        # 英文安装使用方法
 ````
